@@ -21,7 +21,7 @@
   <div class='fixed-nav'></div>
 
   <!-- Each post will be output using this markup -->
-  <% page.posts.each(function(post) { %>
+  <% site.posts.sort('date').each(function(post) { %>
   <div class="post-holder">
     <article class="post first">
       <header class="post-header">
@@ -35,7 +35,7 @@
   </div>
   <% }); %>
 
-  <% if ((page.current == 1) && (config.disqus_shortname)) { %>
+  <% if (config.disqus_shortname) { %>
   <div class="post-holder">
     <article class="post last">
       <header class="post-header">
@@ -49,14 +49,6 @@
     </article>
     <div class="post-after"></div>
   </div>
-  <% } %>
-
-  <% if (page.total > 1) { %>
-  <nav class="pagination" role="pagination">
-    <% if (page.prev) { %><a class="newer-posts" href="<%- config.root %><%- page.prev_link %>">← Newer Posts</a><% } %>
-    <span class="page-number">Page <%- page.current %> of <%- page.total %></span>
-    <% if (page.next) { %><a class="older-posts" href="<%- config.root %><%- page.next_link %>">Older Posts →</a><% } %>
-  </nav>
   <% } %>
 
 </main>
